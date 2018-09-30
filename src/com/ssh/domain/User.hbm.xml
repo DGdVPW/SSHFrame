@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping default-lazy="false" package="com.ssh.domain">    <!-- 导入包 -->
+
+    <class name="User" table="User"> <!-- 表名 -->
+        <id name="id" column="id">    <!-- 主键 -->                        
+            <generator class="assigned"/><!-- 如果主键是自增长改为class="native" -->
+        </id>
+        <!-- 对应的各个字段名 -->
+        <property name="name"  column="name"/>
+        <property name="sex"   column="sex"/>
+        <property name="age"   column="age"/> 
+        <property name="tel"   column="tel"/>
+    </class>   
+</hibernate-mapping>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+ <!DOCTYPE struts PUBLIC
+     "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+     "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+
+	<!-- 配置为开发模式 -->
+	<constant name="struts.devMode" value="false" />
+	<!-- 把扩展名配置为action -->
+	<constant name="struts.action.extension" value="action" />
+	<!-- 把主题配置为simple -->
+	<constant name="struts.ui.theme" value="simple" />
+
+	<package name="default" namespace="/" extends="struts-default">
+		<!-- 配置测试用的Action，未与Spring整合，class属性写类的全名(包名.类名) -->
+		<!-- 当Struts2与Spring整合后，class属性可以写bean的名称(类名首字母小写) -->
+		<action name="test" class="com.ssh.test.StrutsAction">
+			<result name="success">/index.jsp</result>
+		</action>
+
+		<action name="login_*" class="userAction" method="{1}">
+			<result name="success">/success.jsp</result>
+			<result name="error">/error.jsp</result>
+		</action>
+		<!-- 日志管理 -->
+		<action name="log_*" class="logAction" method="{1}">
+			<result name="list">/WEB-INF/jsp/logAction/list.jsp</result>
+			<result name="saveUI">/WEB-INF/jsp/logAction/saveUI.jsp</result>
+		</action>
+
+		<!-- 首页 -->
+		<action name="home_*" class="homeAction" method="{1}">
+			<result name="{1}">/WEB-INF/jsp/homeAction/{1}.jsp</result>
+		</action>
+	</package>
+</struts>
